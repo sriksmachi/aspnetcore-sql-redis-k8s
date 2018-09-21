@@ -13,8 +13,6 @@ var AppComponent = (function () {
     function AppComponent(configuration) {
         this.configuration = configuration;
     }
-    AppComponent.prototype.ngAfterViewInit = function () {
-    };
     AppComponent = __decorate([
         Component({
             selector: 'app-component',
