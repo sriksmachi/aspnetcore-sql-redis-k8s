@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.API", "Acme.API\Acme.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme", "Acme\Acme.csproj", "{5E33138D-838B-4978-B75B-0E14E0EEBFE2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{A2FE670F-785F-4EF1-96ED-9AB2271BE692}"
+	ProjectSection(SolutionItems) = preProject
+		acme-cache-deployment.yml = acme-cache-deployment.yml
+		acme-database-deployment.yml = acme-database-deployment.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
