@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApp.API", "AngularApp.API\AngularApp.API.csproj", "{575DBC8D-5297-4EA3-B917-69A4FFD0162D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.API", "Acme.API\Acme.API.csproj", "{0FED8A16-067A-4F06-BDA9-73C57DCE9AA2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApp", "AngularApp\AngularApp.csproj", "{A89ECA0A-E60A-4D8F-B563-3A52BA4103EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme", "Acme\Acme.csproj", "{5E33138D-838B-4978-B75B-0E14E0EEBFE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{575DBC8D-5297-4EA3-B917-69A4FFD0162D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{575DBC8D-5297-4EA3-B917-69A4FFD0162D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{575DBC8D-5297-4EA3-B917-69A4FFD0162D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{575DBC8D-5297-4EA3-B917-69A4FFD0162D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A89ECA0A-E60A-4D8F-B563-3A52BA4103EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A89ECA0A-E60A-4D8F-B563-3A52BA4103EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A89ECA0A-E60A-4D8F-B563-3A52BA4103EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A89ECA0A-E60A-4D8F-B563-3A52BA4103EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FED8A16-067A-4F06-BDA9-73C57DCE9AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FED8A16-067A-4F06-BDA9-73C57DCE9AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FED8A16-067A-4F06-BDA9-73C57DCE9AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FED8A16-067A-4F06-BDA9-73C57DCE9AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E33138D-838B-4978-B75B-0E14E0EEBFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E33138D-838B-4978-B75B-0E14E0EEBFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E33138D-838B-4978-B75B-0E14E0EEBFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E33138D-838B-4978-B75B-0E14E0EEBFE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
