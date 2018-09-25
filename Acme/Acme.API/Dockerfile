@@ -21,7 +21,7 @@ ENTRYPOINT ["dotnet", "Acme.API.dll"]
 ###############################################################################################################################################################################################################
 # Run the below command to create a container of this image
 # ----------------------------------------------------------
-#
+# docker build -t vishwanathsrikanth/acmeapi:latest .
 # docker run -d -p 81:80 -e ConnectionString='Data Source=172.26.136.1;Initial Catalog=Acme;User ID=sa;Password=Password@123' -e AppSettings:RedisConnectionString='172.26.136.1:6379' --name myacmeapi vishwanathsrikanth/acmeapi:latest
 # 
 # To Test

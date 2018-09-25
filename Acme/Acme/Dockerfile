@@ -16,4 +16,15 @@ COPY --from=build-env /app/out .
 ENV AppSettings:APIServer=apiserver
 ENTRYPOINT ["dotnet", "Acme.dll"]
 
+
+###############################################################################################################################################################################################################
+# Run the below command to create a container of this image
+# ----------------------------------------------------------
+# docker build -t vishwanathsrikanth/acme:latest .
 # docker run -d -p 8080:80 -e AppSettings:APIServer='http://172.26.136.1:81/' --name myacmeapp vishwanathsrikanth/acme:latest
+# 
+# To Test
+# browse http://localhost:8080
+#
+#
+################################################################################################################################################################################################################

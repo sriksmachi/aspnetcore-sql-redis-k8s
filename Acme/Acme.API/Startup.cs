@@ -47,14 +47,24 @@ namespace Acme.API
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
             services.Configure<DbConnectionFactoryOptions>(this.Configuration);
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-            var builder = new ContainerBuilder();
+            var conatinerBuilder = new ContainerBuilder();
             // register the autoFacModules found in loaded runtime assemblies
-            builder.RegisterAssemblyModules(DependencyContext.Default.RuntimeLibraries.SelectMany(lib => lib.GetDefaultAssemblyNames(DependencyContext.Default).Select(Assembly.Load)).ToArray());
-            builder.Populate(services);
-            this.ApplicationContainer = builder.Build();
+            conatinerBuilder.RegisterAssemblyModules(DependencyContext.Default.RuntimeLibraries.SelectMany(lib => lib.GetDefaultAssemblyNames(DependencyContext.Default).Select(Assembly.Load)).ToArray());
+            conatinerBuilder.Populate(services);
+            this.ApplicationContainer = conatinerBuilder.Build();
             // Create the IServiceProvider based on the container.
             return new AutofacServiceProvider(this.ApplicationContainer);
         }
@@ -62,14 +72,12 @@ namespace Acme.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            string apiServer = Configuration.GetSection("AppSettings").GetValue<string>("APIServer");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.EnsureDatabaseIsSeeded(app.ApplicationServices.GetService<IOptions<AppSettings>>());
             }
-            app.UseCors(builder =>
-                            builder.WithOrigins(apiServer, "https://dc.services.visualstudio.com"));
+            app.UseCors("AllowAllOrigins");
             app.UseMvc();
         }
     }
