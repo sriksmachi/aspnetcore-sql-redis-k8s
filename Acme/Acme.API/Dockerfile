@@ -1,5 +1,6 @@
 FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
+EXPOSE 81
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
@@ -17,4 +18,15 @@ ENV ConnectionString=sqlconnectionstring
 ENV AppSettings:RedisConnectionString=redisconnectionstring
 ENTRYPOINT ["dotnet", "Acme.API.dll"]
 
-# docker run -d -p 8080:80 -e ConnectionString='Data Source=172.26.136.1;Initial Catalog=Acme;User ID=sa;Password=Password@123' -e AppSettings:RedisConnectionString='172.26.136.1:6379' --name myacmeapi acmeapi:sriks
+###############################################################################################################################################################################################################
+# Run the below command to create a container of this image
+# ----------------------------------------------------------
+#
+# docker run -d -p 81:80 -e ConnectionString='Data Source=172.26.136.1;Initial Catalog=Acme;User ID=sa;Password=Password@123' -e AppSettings:RedisConnectionString='172.26.136.1:6379' --name myacmeapi vishwanathsrikanth/acmeapi:latest
+# 
+# To Test
+# curl http://localhost:81/api/products
+# curl http://localhost:81/api/values
+#
+#
+################################################################################################################################################################################################################

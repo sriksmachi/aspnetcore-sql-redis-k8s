@@ -62,13 +62,14 @@ namespace Acme.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            string apiServer = Configuration.GetSection("AppSettings").GetValue<string>("APIServer");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.EnsureDatabaseIsSeeded(app.ApplicationServices.GetService<IOptions<AppSettings>>());
             }
             app.UseCors(builder =>
-                            builder.WithOrigins("http://localhost:5000", "https://dc.services.visualstudio.com"));
+                            builder.WithOrigins(apiServer, "https://dc.services.visualstudio.com"));
             app.UseMvc();
         }
     }

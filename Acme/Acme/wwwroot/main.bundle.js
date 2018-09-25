@@ -142,17 +142,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var Configuration = (function () {
     function Configuration(http) {
-        var _this = this;
         this.http = http;
-        this.Server = 'http://localhost:19714/';
+        this.Server = '';
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
         this.headers = this.headers.set('Content-Type', 'application/json');
         this.headers = this.headers.set('Accept', 'application/json');
-        this.http.get("/api/home/")
-            .subscribe(function (data) {
-            _this.Server = data.apiserver;
-            console.log('Configuration: ' + JSON.stringify(data));
-        });
+        var xmlhttp = new XMLHttpRequest();
+        var method = 'GET';
+        var url = 'api/home/';
+        xmlhttp.open(method, url, false);
+        var that = this;
+        xmlhttp.onload = function () {
+            if (xmlhttp.status === 200) {
+                that.Server = JSON.parse(xmlhttp.responseText).apiserver;
+                console.log('API Server URL: ' + that.Server);
+            }
+            else {
+                throw new Error("Critical configuration missing!!");
+            }
+        };
+        xmlhttp.send();
     }
     Configuration = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),

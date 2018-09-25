@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { strictEqual } from 'assert';
-
 
 @Injectable()
 export class Configuration {
-    public Server = 'http://localhost:19714/';
-    private headers: HttpHeaders;
+    public Server = '';
 
-    constructor(private http: HttpClient) {
+    constructor() {
 
-        this.headers = new HttpHeaders();
-        this.headers = this.headers.set('Content-Type', 'application/json');
-        this.headers = this.headers.set('Accept', 'application/json');
-
-        // go get where the api server is located
-        this.http.get("/api/home/")
-            .subscribe(data => {
-                this.Server = (<any>data).apiserver;
-                console.log('Configuration: ' + JSON.stringify(data));
-            });
+        // go get synchronously where the api server is located
+        // without this response app cannot load so sync is opted
+        var xmlhttp = new XMLHttpRequest();
+        var method = 'GET';
+        var url = 'api/home/';
+        xmlhttp.open(method, url, false);
+        var that = this;
+        xmlhttp.onload = function () {
+            if (xmlhttp.status === 200) {
+                that.Server = JSON.parse(xmlhttp.responseText).apiserver;
+                console.log('API Server URL: ' + that.Server);
+            } else {
+                throw new Error("Critical configuration missing!!")
+            }
+        };
+        xmlhttp.send();
     }
 }
