@@ -1,7 +1,5 @@
 ﻿import './styles.css';
-
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { AppModule } from './app/app.module';
 
 // Entry point for JiT compilation.

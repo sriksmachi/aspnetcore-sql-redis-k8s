@@ -5,7 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -18,6 +18,8 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { RouterModule } from '@angular/router';
 import { ProductGuardService } from './products/product-guard.service';
 import { ProductService } from './core/services/product.service';
+import { LogAppInsights } from './core/services/appinsights.service';
+import { ExceptionHandler } from './core/services/errorhandler.service';
 import { CommonModule } from '@angular/common';
 import { CustomFooterComponent } from './shared/components/customfooter/customfooter.component';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
@@ -71,8 +73,12 @@ var AppModule = (function () {
                 HomeComponent
             ],
             providers: [
+                LogAppInsights,
                 ProductService,
-                ProductGuardService
+                ProductGuardService,
+                {
+                    provide: ErrorHandler, useClass: ExceptionHandler
+                },
             ],
             bootstrap: [AppComponent]
         })

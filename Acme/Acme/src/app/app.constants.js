@@ -13,7 +13,7 @@ var Configuration = (function () {
     function Configuration(http) {
         var _this = this;
         this.http = http;
-        this.Server = 'http://localhost:19714/';
+        this.Server = 'http://localhost:4424/';
         this.headers = new HttpHeaders();
         this.headers = this.headers.set('Content-Type', 'application/json');
         this.headers = this.headers.set('Accept', 'application/json');

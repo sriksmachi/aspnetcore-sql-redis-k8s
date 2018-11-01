@@ -32,7 +32,7 @@ var HomeComponent = (function () {
         var _this = this;
         this.dataService.getTop5()
             .subscribe(function (products) {
-            _this.top5products = products;
+            throw Error("This is a custom error");
         }, function (error) { return _this.errorMessage = error; });
         console.log("Search String: " + this.searchString);
     };

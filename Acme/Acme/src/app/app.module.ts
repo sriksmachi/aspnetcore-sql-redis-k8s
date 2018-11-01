@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -12,6 +12,8 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { RouterModule } from '@angular/router';
 import { ProductGuardService } from './products/product-guard.service';
 import { ProductService } from './core/services/product.service';
+import { MonitoringService } from './core/services/monitoring.service';
+import { ExceptionHandler } from './core/services/errorhandler.service';
 import { CommonModule } from '@angular/common';
 import { CustomFooterComponent } from './shared/components/customfooter/customfooter.component';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
@@ -65,8 +67,12 @@ import { HomeComponent } from './home/components/home.component';
     ],
 
     providers: [
+        MonitoringService,
         ProductService,
-        ProductGuardService
+        ProductGuardService,
+        {
+            provide: ErrorHandler, useClass: ExceptionHandler
+        }
     ],
 
     bootstrap: [AppComponent]

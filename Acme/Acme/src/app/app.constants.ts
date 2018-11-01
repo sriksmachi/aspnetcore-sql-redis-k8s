@@ -5,7 +5,7 @@ import { strictEqual } from 'assert';
 
 @Injectable()
 export class Configuration {
-    public Server = 'http://localhost:19714/';
+    public Server = 'http://localhost:4424/';
     private headers: HttpHeaders;
 
     constructor(private http: HttpClient) {
